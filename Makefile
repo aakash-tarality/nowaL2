@@ -4,7 +4,7 @@
 ###                           Module & Versioning                           ###
 ###############################################################################
 
-VERSION ?= $(shell echo $(shell git describe --tags --always) | sed 's/^v//')
+VERSION := v0.0.1
 TMVERSION := $(shell go list -m github.com/cometbft/cometbft | sed 's:.* ::')
 COMMIT := $(shell git log -1 --format='%H')
 
