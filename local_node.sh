@@ -345,4 +345,7 @@ evmd start "$TRACE" \
 	--evm.min-tip=0 \
 	--home "$CHAINDIR" \
 	--json-rpc.api eth,txpool,personal,net,debug,web3 \
+	--grpc.enable \
+	--api.enable \
 	--chain-id "$CHAINID"
+
