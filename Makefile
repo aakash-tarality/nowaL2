@@ -101,7 +101,7 @@ build-linux:
 install: go.sum
 	@echo "🚚  Installing $(EXAMPLE_BINARY) to $(BINDIR) ..."
 	@cd $(EVMD_DIR) && CGO_ENABLED="1" \
-	  go install $(BUILD_FLAGS) $(EVMD_MAIN_PKG)
+	  go build $(BUILD_FLAGS) -o $(BINDIR)/$(EXAMPLE_BINARY) $(EVMD_MAIN_PKG)
 
 $(BUILDDIR)/:
 	mkdir -p $(BUILDDIR)/
@@ -380,7 +380,7 @@ test-rpc-compat-stop:
 
 test-system: build-v04 build
 	mkdir -p ./tests/systemtests/binaries/
-	cp $(BUILDDIR)/evmd ./tests/systemtests/binaries/
+	cp $(BUILDDIR)/$(EXAMPLE_BINARY) ./tests/systemtests/binaries/
 	cd tests/systemtests/Counter && forge build
 	$(MAKE) -C tests/systemtests test
 
